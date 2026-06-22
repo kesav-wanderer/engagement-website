@@ -1967,10 +1967,7 @@
 
             <button type="submit" class="f-submit">Send RSVP &nbsp;✦</button>
 
-            <div id="rsvp-ok">
-                ✦ &nbsp;Thank you! Your RSVP has been received.
-                We look forward to celebrating this moment with you.&nbsp; ✦
-            </div>
+            <div id="rsvp-ok"></div>
         </form>
     </div>
 </section>
@@ -2107,8 +2104,15 @@
         }).catch(function(){});
 
         var form = e.target;
+        var attending = document.getElementById('rsvp-val').value;
+        var messages = {
+            'Joyfully Accepts':       '🎉 &nbsp;Wonderful! We are absolutely thrilled to have you with us. September 13th just got even more special!',
+            'Will Try to Make It':    '🤞 &nbsp;We truly hope to see you there — fingers crossed! Either way, your warmth means the world to us.',
+            'Regretfully Declines':   '💛 &nbsp;We will miss you dearly, but we completely understand. You will be in our hearts on this special day.'
+        };
         form.querySelector('.f-submit').style.display = 'none';
         var ok = document.getElementById('rsvp-ok');
+        ok.innerHTML = '✦ &nbsp;' + (messages[attending] || 'Thank you! Your RSVP has been received.') + '&nbsp; ✦';
         ok.style.display = 'block';
         ok.scrollIntoView({ behavior: 'smooth' });
         form.reset();
