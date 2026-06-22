@@ -1341,14 +1341,15 @@
 
         /* ── Tablet / small desktop ── */
         @media (max-width:900px) {
-            /* Hero: stack vertically, center content first */
+            /* Hero: title full-width on top, couple side-by-side below */
             .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                gap: 24px;
             }
+            .hero-center       { grid-column: 1 / -1; order: 0; }
             .couple-side.bride { order: 1; }
-            .hero-center       { order: 2; }
-            .couple-side.groom { order: 3; }
+            .couple-side.groom { order: 2; }
 
             /* Remove rotation on mobile — prevents horizontal overflow */
             .couple-side.bride { animation: float-l-m 4.5s ease-in-out infinite; }
@@ -1362,7 +1363,7 @@
                 50%     { transform: translateY(8px); }
             }
 
-            .photo-frame { width: 190px; height: 280px; }
+            .photo-frame { width: 170px; height: 260px; }
 
             /* Sections */
             .sec { padding: 60px 24px; }
@@ -1408,14 +1409,22 @@
 
         /* ── Mobile ── */
         @media (max-width:600px) {
-            /* Hero */
+            /* Hero: center full-width top, couple side-by-side bottom */
             #hero { padding: 80px 16px 50px; }
-            .hero-grid { gap: 24px; }
-            .photo-frame { width: 160px; height: 240px; }
-            .person-name { font-size: 20px; max-width: 180px; }
-            .hero-title { font-size: clamp(30px,8vw,44px); }
-            .hero-pretitle { font-size: 8px; letter-spacing: 3px; }
-            .hero-amp { font-size: 80px; }
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                gap: 16px 12px;
+            }
+            .hero-center       { grid-column: 1 / -1; order: 0; }
+            .couple-side.bride { order: 1; }
+            .couple-side.groom { order: 2; }
+            .photo-frame { width: 140px; height: 210px; }
+            .person-name { font-size: 16px; max-width: 150px; }
+            .person-role { font-size: 8px; }
+            .hero-title { font-size: clamp(26px,7vw,38px); }
+            .hero-pretitle { font-size: 7px; letter-spacing: 3px; }
+            .hero-amp { font-size: 70px; }
             .hero-venue-text { font-size: 9px; letter-spacing: 2px; }
 
             /* Date box */
