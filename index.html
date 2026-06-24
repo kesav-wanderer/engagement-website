@@ -67,6 +67,7 @@
         /* animated petals in overlay */
         .ol-petal {
             position: absolute;
+            top: -60px;
             border-radius: 50% 0 50% 0;
             animation: ol-fall linear infinite;
             pointer-events: none;
@@ -534,8 +535,8 @@
 
         @keyframes hp-float {
             0%   { opacity:0; transform:translateY(-30px) rotate(0deg); }
-            10%  { opacity:.6; }
-            90%  { opacity:.3; }
+            10%  { opacity:.85; }
+            90%  { opacity:.5; }
             100% { opacity:0; transform:translateY(100vh) rotate(360deg); }
         }
 
@@ -1493,6 +1494,12 @@
     <div class="ol-petal" style="width: 9px;height:14px;background:rgba(242,208,196,.4);left:56%; animation-duration:6.5s;animation-delay:.5s;"></div>
     <div class="ol-petal" style="width:11px;height:17px;background:rgba(212,168,83,.35);left:72%; animation-duration:10s; animation-delay:1.5s;"></div>
     <div class="ol-petal" style="width: 8px;height:12px;background:rgba(201,168,160,.4); left:87%; animation-duration:7.5s;animation-delay:3s;"></div>
+    <div class="ol-petal" style="width: 9px;height:14px;background:rgba(212,168,83,.3); left:15%; animation-duration:8.5s;animation-delay:2.5s;"></div>
+    <div class="ol-petal" style="width:11px;height:17px;background:rgba(242,208,196,.4);left:30%; animation-duration:7.2s;animation-delay:4s;"></div>
+    <div class="ol-petal" style="width: 8px;height:12px;background:rgba(201,168,160,.35);left:47%; animation-duration:9.5s;animation-delay:1.2s;"></div>
+    <div class="ol-petal" style="width:12px;height:18px;background:rgba(212,168,83,.3); left:64%; animation-duration:6.8s;animation-delay:3.5s;"></div>
+    <div class="ol-petal" style="width: 9px;height:14px;background:rgba(242,208,196,.4);left:80%; animation-duration:8.8s;animation-delay:.8s;"></div>
+    <div class="ol-petal" style="width:10px;height:16px;background:rgba(201,168,160,.4); left:94%; animation-duration:7.6s;animation-delay:2.8s;"></div>
 
     <div class="ol-card">
         <span class="ol-envelope">💌</span>
@@ -1503,7 +1510,7 @@
             Kesavraj&nbsp;<span class="heart">♡</span>&nbsp;Madhumitha
         </div>
         <div class="ol-line"></div>
-        <p class="ol-when">Sunday · 13 September 2026 · 6:00 PM onwards</p>
+        <p class="ol-when">Sunday · 13 September 2026 · 5:00 PM onwards</p>
         <button class="ol-btn" onclick="openSite()">
             <span>Open Invitation &nbsp;✦</span>
         </button>
@@ -1558,7 +1565,7 @@
             <div class="date-box">
                 <span class="date-month">September</span>
                 <span class="date-day">13</span>
-                <span class="date-meta">2026 &nbsp;·&nbsp; Sunday &nbsp;·&nbsp; 6 PM</span>
+                <span class="date-meta">2026 &nbsp;·&nbsp; Sunday &nbsp;·&nbsp; 5 PM</span>
             </div>
             <a href="#rsvp" class="hero-cta">Kindly RSVP &nbsp;→</a>
         </div>
@@ -1611,7 +1618,7 @@
             <div class="dc fi">
                 <span class="dc-icon">🕕</span>
                 <div class="dc-label">Time</div>
-                <div class="dc-value">6:00 PM<br>onwards</div>
+                <div class="dc-value">5:00 PM<br>onwards</div>
                 <div class="dc-sub">Evening celebration</div>
             </div>
             <div class="dc fi">
@@ -2025,7 +2032,7 @@
 
     /* --- COUNTDOWN --- */
     function updateCD() {
-        const target = new Date('2026-09-13T18:00:00+05:30');
+        const target = new Date('2026-09-13T17:00:00+05:30');
         const now = new Date();
         const diff = target - now;
 
@@ -2139,23 +2146,24 @@
     function spawnPetal() {
         const p = document.createElement('div');
         p.className = 'hp';
-        const size = 7 + Math.random() * 11;
+        const size = 10 + Math.random() * 13;
+        const duration = 4 + Math.random() * 4;
         p.style.cssText = `
             left:${Math.random()*100}%;
             top:-20px;
             width:${size}px;
             height:${size * 1.6}px;
-            animation-duration:${7 + Math.random()*8}s;
+            animation-duration:${duration}s;
         `;
         const c = petalColors[Math.floor(Math.random() * petalColors.length)];
-        p.innerHTML = `<svg viewBox="0 0 40 60" style="width:100%;height:100%"><ellipse cx="20" cy="30" rx="13" ry="24" fill="${c}" opacity=".5" transform="rotate(${Math.random()*60-30},20,30)"/></svg>`;
+        p.innerHTML = `<svg viewBox="0 0 40 60" style="width:100%;height:100%"><ellipse cx="20" cy="30" rx="13" ry="24" fill="${c}" opacity=".8" transform="rotate(${Math.random()*60-30},20,30)"/></svg>`;
         heroEl.appendChild(p);
-        setTimeout(() => p.remove(), 15000);
+        setTimeout(() => p.remove(), duration * 1000);
     }
 
     new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
-            petalTimer = setInterval(spawnPetal, 1800);
+            petalTimer = setInterval(spawnPetal, 650);
         } else {
             clearInterval(petalTimer);
         }
