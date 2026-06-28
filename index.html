@@ -773,16 +773,15 @@
 
         .story-photo {
             width:100%;
-            aspect-ratio: 3/4;
             background:var(--ivory);
             overflow:hidden;
             position:relative;
         }
 
         .story-photo img {
-            width:100%;height:100%;
-            object-fit:cover;
-            object-position: center 25%;
+            width:100%;
+            height:auto;
+            display:block;
         }
 
         .story-photo .no-img {
@@ -1538,9 +1537,6 @@
             /* RSVP */
             .rsvp-form { padding: 0; }
             .rsvp-opts { gap: 10px; }
-
-            /* Story */
-            .story-img-wrap { height: 300px; }
 
             /* Overlay */
             .ol-card { padding: 20px 16px; }
