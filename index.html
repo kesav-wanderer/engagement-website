@@ -1180,8 +1180,10 @@
         /* Google Photos upload card */
         .photos-upload-card {
             margin-top: 48px;
-            background: linear-gradient(135deg, var(--wine) 0%, var(--dark) 100%);
-            border: 1px solid rgba(200,168,69,.2);
+            background: #fff;
+            border: 1px solid rgba(200,168,69,.35);
+            border-top: 3px solid var(--gold);
+            box-shadow: var(--shadow-sm);
             padding: 56px 40px;
             text-align: center;
         }
@@ -1193,17 +1195,18 @@
         }
         .puc-title {
             font-family: var(--ff-serif); font-size: clamp(24px,3.5vw,38px);
-            color: #fff; font-weight: 400; font-style: italic;
+            color: var(--wine); font-weight: 400; font-style: italic;
             line-height: 1.2; margin-bottom: 18px;
         }
         .puc-desc  {
-            font-family: var(--ff-italic); font-size: 15px; color: rgba(255,255,255,.6);
+            font-family: var(--ff-italic); font-size: 15px; color: var(--charcoal);
             font-style: italic; line-height: 1.8; margin-bottom: 32px;
+            opacity: .75;
         }
         .puc-btn {
             display: inline-block;
-            border: 1.5px solid var(--gold);
-            color: var(--gold);
+            border: 1.5px solid var(--wine);
+            color: var(--wine);
             padding: 14px 44px;
             font-family: var(--ff-sans); font-size: 10px;
             letter-spacing: 3px; text-transform: uppercase;
@@ -1213,16 +1216,16 @@
         }
         .puc-btn::before {
             content: ''; position: absolute; inset: 0;
-            background: var(--gold); transform: translateX(-100%);
+            background: var(--wine); transform: translateX(-100%);
             transition: transform .4s ease;
         }
         .puc-btn:hover::before { transform: translateX(0); }
         .puc-btn span { position: relative; z-index: 1; }
-        .puc-btn:hover span { color: var(--dark); }
+        .puc-btn:hover span { color: var(--cream); }
         .puc-hint  {
             margin-top: 16px;
             font-family: var(--ff-sans); font-size: 9px; letter-spacing: 1.5px;
-            color: rgba(255,255,255,.3); text-transform: uppercase;
+            color: rgba(58,42,32,.45); text-transform: uppercase;
         }
 
         /* =====================================================
@@ -1955,7 +1958,7 @@
 <!-- ============================================================
      GALLERY
 ============================================================ -->
-<section class="sec" id="gallery" style="padding-top:0;">
+<section class="sec" id="gallery">
     <div class="sec-inner">
         <!-- Google Photos shared album -->
         <div class="fi photos-upload-card" style="margin-top:0;">
